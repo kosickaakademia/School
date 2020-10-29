@@ -19,6 +19,11 @@ public class Student {
         this.className=className;
     }
 
+    public Student(String fname, String lastName, Grades grades, ClassName className, Date dob ){
+        this(fname,lastName,grades,className); // zavolam dalsi kontruktor
+        this.dob=dob;
+    }
+
     public void setSalary(int salary) {
         this.salary = salary;
     }
@@ -49,5 +54,10 @@ public class Student {
 
     public Grades getGrades() {
         return grades;
+    }
+
+    @Override
+    public String toString() {
+       return firstName+" "+lastName;
     }
 }
