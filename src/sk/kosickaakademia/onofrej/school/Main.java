@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -18,6 +19,28 @@ public class Main {
         printStudentsWhereAverageLE2(students); // LE <=   GT >   LT <   GE >=     EQ ==
         // DU doplnit datum
         // vypisat od 1.1.2000
+
+
+        sortByAverage(students);
+        System.out.println("---------------------------------");
+        System.out.println("Sort and print:");
+        printAllStudents(students);
+
+    }
+
+    private static void sortByAverage(Student[] students) {
+        int len=students.length;
+        for(int i = 0;i<=len-1;i++){
+            for(int j=0; j< len-1-i;j++){
+                if(students[j].getGrades().getAverage()>students[j+1].getGrades().getAverage()){
+                    // ak podmienka plati, je potrebne vymenit A[j] <-> A[j+1]
+                    Student temp = students[j];
+                    students[j]=students[j+1];
+                    students[j+1] = temp;
+
+                }
+            }
+        }
     }
 
     private static void printStudentsWhereAverageLE2(Student[] students) {
@@ -25,8 +48,8 @@ public class Main {
         int len=students.length;
         System.out.println("List of students - where AVG <=2 :");
         for(i=0;i<len;i++) {
-            Grades temp = students[i].getGrades();
-            double avg = ( temp.getEng()+temp.getMat()+ temp.getPro() ) / 3.0;
+
+            double avg = students[i].getGrades().getAverage();
             if(avg<=2)
                 System.out.println("   "+students[i].getFirstName()+" "+students[i].getLastName() + " "+avg);
         }
@@ -40,6 +63,18 @@ public class Main {
             if(students[i].getClassName()==ClassName.N1)
                 System.out.println(students[i].toString());
                 //System.out.println("   "+students[i].getFirstName()+" "+students[i].getLastName());
+        }
+        System.out.println();
+    }
+
+    private static void printAllStudents(Student[] students) {
+        int i;
+        int len=students.length;
+        System.out.println("List of students - 1N :");
+        for(i=0;i<len;i++){
+
+                System.out.println(students[i].toString());
+            //System.out.println("   "+students[i].getFirstName()+" "+students[i].getLastName());
         }
         System.out.println();
     }
