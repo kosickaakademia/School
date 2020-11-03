@@ -1,5 +1,9 @@
 package sk.kosickaakademia.onofrej.school;
 
+import sk.kosickaakademia.onofrej.school.hobby.Book;
+import sk.kosickaakademia.onofrej.school.hobby.Hobby;
+import sk.kosickaakademia.onofrej.school.hobby.Movie;
+
 import java.util.Date;
 
 public class Student {
@@ -10,6 +14,8 @@ public class Student {
     private int salary;
     private Date dob;
     private Grades grades;  // Grades ...trieda - data typ , grades ...variable/premenna
+    private Hobby[] hobbies;
+    private int countHobbies;
 
     // metody
     public Student(String fname, String lastName, Grades grades, ClassName className ){
@@ -17,6 +23,8 @@ public class Student {
         this.lastName=lastName;
         this.grades=grades;
         this.className=className;
+        hobbies = new Hobby[5];
+        countHobbies=0;
     }
 
     public Student(String fname, String lastName, Grades grades, ClassName className, Date dob ){
@@ -59,5 +67,26 @@ public class Student {
     @Override
     public String toString() {
        return firstName+" "+lastName+" "+getGrades().getAverage();
+    }
+
+    public void addHobby(Hobby newHobby){
+        int len = hobbies.length;
+        if(countHobbies==len){
+            System.out.println("Chyba, nie je mozne pridat dalsie hobby");
+            return;
+        }
+        hobbies[countHobbies++] = newHobby;
+    }
+
+    public void printHobbies(){
+        System.out.println("Student's hobby:");
+        int len = hobbies.length;
+        for(int i=0;i<countHobbies;i++) {
+            System.out.println(hobbies[i].getName());
+            if (hobbies[i] instanceof Book)
+                System.out.println(((Book) hobbies[i]).getAuthor());
+            if(hobbies[i] instanceof Movie)
+                System.out.println(((Movie)hobbies[i]).getYear() );
+        }
     }
 }

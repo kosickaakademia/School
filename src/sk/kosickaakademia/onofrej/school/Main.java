@@ -1,5 +1,9 @@
 package sk.kosickaakademia.onofrej.school;
 
+import sk.kosickaakademia.onofrej.school.hobby.Book;
+import sk.kosickaakademia.onofrej.school.hobby.Movie;
+import sk.kosickaakademia.onofrej.school.hobby.Sport;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,17 +19,28 @@ public class Main {
         Student[] students ;
 
         students = initStudents();
-        printN1Students(students);
-        printStudentsWhereAverageLE2(students); // LE <=   GT >   LT <   GE >=     EQ ==
+        /*printN1Students(students);
+        printStudentsWhereAverageLE2(students); // LE <=   GT >   LT <   GE >=     EQ ==*/
         // DU doplnit datum
         // vypisat od 1.1.2000
 
 
-        sortByAverage(students);
+        /*sortByAverage(students);
         System.out.println("---------------------------------");
         System.out.println("Sort and print:");
-        printAllStudents(students);
+        printAllStudents(students);*/
 
+        Book b1 = new Book("Hlava XXII","J. Heller");
+        students[0].addHobby(b1);
+        Sport s1=new Sport("Hockey");
+        students[0].addHobby(s1);
+        Book b2 = new Book("Marina","A. Sladkovic");
+        students[0].addHobby(b2);
+
+        Movie m1=new Movie("Aladin",2019);
+        students[0].addHobby(m1);
+
+        students[0].printHobbies();
     }
 
     private static void sortByAverage(Student[] students) {
