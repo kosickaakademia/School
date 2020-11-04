@@ -3,6 +3,8 @@ package sk.kosickaakademia.onofrej.school;
 import sk.kosickaakademia.onofrej.school.hobby.Book;
 import sk.kosickaakademia.onofrej.school.hobby.Movie;
 import sk.kosickaakademia.onofrej.school.hobby.Sport;
+import sk.kosickaakademia.onofrej.school.pet.Dog;
+import sk.kosickaakademia.onofrej.school.pet.Fish;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -41,6 +43,9 @@ public class Main {
         students[0].addHobby(m1);
 
         students[0].printHobbies();
+
+        students[0].setMyAnimal( new Dog("Rex","Nemecky ovciak") );
+        students[0].setMyAnimal( new Fish() );
     }
 
     private static void sortByAverage(Student[] students) {

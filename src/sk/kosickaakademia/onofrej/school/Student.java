@@ -3,6 +3,7 @@ package sk.kosickaakademia.onofrej.school;
 import sk.kosickaakademia.onofrej.school.hobby.Book;
 import sk.kosickaakademia.onofrej.school.hobby.Hobby;
 import sk.kosickaakademia.onofrej.school.hobby.Movie;
+import sk.kosickaakademia.onofrej.school.pet.Animal;
 
 import java.util.Date;
 
@@ -16,6 +17,7 @@ public class Student {
     private Grades grades;  // Grades ...trieda - data typ , grades ...variable/premenna
     private Hobby[] hobbies;
     private int countHobbies;
+    private Animal myAnimal;
 
     // metody
     public Student(String fname, String lastName, Grades grades, ClassName className ){
@@ -25,11 +27,20 @@ public class Student {
         this.className=className;
         hobbies = new Hobby[5];
         countHobbies=0;
+        myAnimal = null;
     }
 
     public Student(String fname, String lastName, Grades grades, ClassName className, Date dob ){
         this(fname,lastName,grades,className); // zavolam dalsi kontruktor
         this.dob=dob;
+    }
+
+    public Animal getMyAnimal() {
+        return myAnimal;
+    }
+
+    public void setMyAnimal(Animal myAnimal) {
+        this.myAnimal = myAnimal;
     }
 
     public void setSalary(int salary) {
